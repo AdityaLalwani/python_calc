@@ -77,8 +77,9 @@ class GUI(QMainWindow):
 ..* getDisplayText
 ..* clearDisplay
 
-## 3: Create Model of application
+## 4: Create Model of application
 - Evaluting the Expression
+```
 def evaluateExpression(expression):
     """Evaluate an expression."""
     try:
@@ -87,3 +88,28 @@ def evaluateExpression(expression):
         result = ERROR_MSG
 
     return result
+```
+## 5: Create Controller of application
+- Create a Controller class to connect the GUI and the model
+Evaluate expressions.
+```
+result = self._evaluate(expression=self._view.getDisplayText())
+        self._view.setDisplayText(result)
+```
+Build expression.
+```
+if self._view.getDisplayText() == ERROR_MSG:
+            self._view.clearDisplay()
+expression = self._view.getDisplayText() + sub_exp
+self._view.setDisplayText(expression)
+```
+Connect signals and slots.
+```
+for btnText, btn in self._view.buttons.items():
+            if btnText not in {'=', 'C'}:
+                btn.clicked.connect(partial(self._buildExpression, btnText))
+
+self._view.buttons['='].clicked.connect(self._calculateResult)
+self._view.display.returnPressed.connect(self._calculateResult)
+self._view.buttons['C'].clicked.connect(self._view.clearDisplay)
+```
