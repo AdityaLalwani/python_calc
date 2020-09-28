@@ -1,4 +1,4 @@
-# Details of test.py
+# Details of test.py 
     import sys
     from PyQt5.QtWidgets import QApplication
     from PyQt5.QtWidgets import QLabel
@@ -12,3 +12,18 @@
     helloMsg.move(60, 30)
     window.show()
     sys.exit(app.exec_())
+
+#3: Create view of application i.e. GUI
+Create class named view.py
+Import following modules
+from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QGridLayout
+from PyQt5.QtWidgets import QLineEdit
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QVBoxLayout
+Create class GUI with parent set to QMainWindow
+class GUI(QMainWindow):
+Add Constructor ...It will initiate main window by calling superclass constuctor and setting basic parametes such as ..* WindowTitle ..* Size ..* generalLayout ..* LED Display ..* Buttons
+
+Define methods ..* _createDisplayLED ..* _createButtons ..* setDisplayText ..* getDisplayText ..* clearDisplay
